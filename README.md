@@ -24,3 +24,9 @@ The following **optional** features are implemented:
 	User can click on "add a bathroom" icon.
 	User can edit these options: location,rating, bady changing, number of closet / urinal, fee, toilet paper.
 	
+** Wireframes
+
+<img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/MainPage.png' title='Main' width='' alt='Main' />
+<img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/CheckIn.png' title='CheckIn' width='' alt='CheckIn' />
+<img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/setting.png' title='Setting' width='' alt='Setting' />
+<img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/report.png' title='Report' width='' alt='Report' />
