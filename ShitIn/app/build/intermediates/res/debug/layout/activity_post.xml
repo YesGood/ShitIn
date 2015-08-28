@@ -12,11 +12,11 @@
         android:id="@+id/post_edittext"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/character_count_textview"
         android:background="@null"
         android:hint="@string/prompt_post"
         android:inputType="textMultiLine"
-        android:gravity="top" >
+        android:gravity="top"
+        android:layout_above="@+id/character_count_textview">
         <requestFocus />
     </EditText>
 
@@ -24,12 +24,10 @@
         android:id="@+id/post_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/post"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/post" />
+        android:layout_alignParentStart="true" />
     
 	<TextView
         android:id="@+id/character_count_textview"
@@ -43,5 +41,13 @@
         android:layout_above="@id/post_button"
         android:text="@string/character_count_placeholder"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-    
-</RelativeLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/AnyWall/Anywall/app/src/main/res/layout/activity_post.xml -->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etType"
+        android:layout_below="@+id/post_edittext"
+        android:layout_toRightOf="@+id/post_button"
+        android:layout_toEndOf="@+id/post_button" />
+
+</RelativeLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/layout/activity_post.xml -->

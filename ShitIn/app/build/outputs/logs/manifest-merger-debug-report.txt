@@ -26,13 +26,13 @@ MERGED from com.android.support:support-v4:21.0.0:15:5
 		ADDED from AndroidManifest.xml:8:9
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-permission#com.parse.shitIn.permission.MAPS_RECEIVE
+permission#com.yesgood.shitIn.permission.MAPS_RECEIVE
 ADDED from AndroidManifest.xml:11:5
 	android:protectionLevel
 		ADDED from AndroidManifest.xml:13:9
 	android:name
 		ADDED from AndroidManifest.xml:12:9
-uses-permission#com.parse.anywall.permission.MAPS_RECEIVE
+uses-permission#com.yesgood.shitIn.permission.MAPS_RECEIVE
 ADDED from AndroidManifest.xml:16:5
 	android:name
 		ADDED from AndroidManifest.xml:16:22
@@ -77,7 +77,7 @@ MERGED from com.android.support:support-v4:21.0.0:16:5
 		ADDED from AndroidManifest.xml:36:9
 	android:name
 		ADDED from AndroidManifest.xml:32:9
-activity#com.parse.shitIn.MainActivity
+activity#com.yesgood.shitIn.MainActivity
 ADDED from AndroidManifest.xml:38:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:41:13
@@ -98,7 +98,7 @@ MERGED from com.google.android.gms:play-services:6.5.87:21:9
 		ADDED from AndroidManifest.xml:47:20
 	android:value
 		ADDED from AndroidManifest.xml:48:13
-activity#com.parse.shitIn.LoginActivity
+activity#com.yesgood.shitIn.LoginActivity
 ADDED from AndroidManifest.xml:50:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:53:13
@@ -106,7 +106,7 @@ ADDED from AndroidManifest.xml:50:9
 		ADDED from AndroidManifest.xml:52:13
 	android:name
 		ADDED from AndroidManifest.xml:51:13
-activity#com.parse.shitIn.SignUpActivity
+activity#com.yesgood.shitIn.SignUpActivity
 ADDED from AndroidManifest.xml:55:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:58:13
@@ -114,7 +114,7 @@ ADDED from AndroidManifest.xml:55:9
 		ADDED from AndroidManifest.xml:57:13
 	android:name
 		ADDED from AndroidManifest.xml:56:13
-activity#com.parse.shitIn.DispatchActivity
+activity#com.yesgood.shitIn.DispatchActivity
 ADDED from AndroidManifest.xml:60:9
 	android:noHistory
 		ADDED from AndroidManifest.xml:62:13
@@ -130,7 +130,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:66:17
 	android:name
 		ADDED from AndroidManifest.xml:66:27
-activity#com.parse.shitIn.WelcomeActivity
+activity#com.yesgood.shitIn.WelcomeActivity
 ADDED from AndroidManifest.xml:69:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:72:13
@@ -140,7 +140,7 @@ ADDED from AndroidManifest.xml:69:9
 		ADDED from AndroidManifest.xml:73:13
 	android:name
 		ADDED from AndroidManifest.xml:70:13
-activity#com.parse.shitIn.PostActivity
+activity#com.yesgood.shitIn.PostActivity
 ADDED from AndroidManifest.xml:74:9
 	android:windowSoftInputMode
 		ADDED from AndroidManifest.xml:77:13
@@ -148,7 +148,7 @@ ADDED from AndroidManifest.xml:74:9
 		ADDED from AndroidManifest.xml:76:13
 	android:name
 		ADDED from AndroidManifest.xml:75:13
-activity#com.parse.shitIn.SettingsActivity
+activity#com.yesgood.shitIn.SettingsActivity
 ADDED from AndroidManifest.xml:78:9
 	android:label
 		ADDED from AndroidManifest.xml:80:13

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/AnyWall/Anywall/app/src/main/res/values-large/styles.xml -->
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values-large/styles.xml -->
     <eat-comment/>
     <style name="LoginFormContainer">
         <item name="android:layout_width">400dp</item>
