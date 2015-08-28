@@ -1,5 +1,7 @@
 package com.yesgood.shitIn;
 
+import android.content.Context;
+
 import java.util.Arrays;
 
 /**
@@ -26,6 +28,28 @@ public class ToiletDataDefine {
     public static boolean getPaperIndex( int id )
     {
         return Arrays.asList(paper_index).indexOf(id) == 0 ? true: false;
+    }
+
+    public static String getBabyChangingText( Context context, boolean flag )
+    {
+        return flag == true ? context.getResources().getString(R.string.yes_text) : context.getResources().getString(R.string.no_text);
+    }
+
+    public static String getPaperText( Context context, boolean flag )
+    {
+        return flag == true ? context.getResources().getString(R.string.yes_text) : context.getResources().getString(R.string.no_text);
+    }
+
+    public static String getClosetText( Context context, int value )
+    {
+        String[] closet_array = context.getResources().getStringArray(R.array.closet_numeric_array);
+        return closet_array.length > value ? closet_array[value] : "";
+    }
+
+    public static String getUrinalText( Context context, int value )
+    {
+        String[] urinal_array = context.getResources().getStringArray(R.array.urinal_numeric_array);
+        return urinal_array.length > value ? urinal_array[value] : "";
     }
 
     public static boolean getPrivateIndex( int id )

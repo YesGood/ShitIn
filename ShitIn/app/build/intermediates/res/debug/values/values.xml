@@ -108,6 +108,11 @@
     <eat-comment/>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="creator_text">Creator</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
+    <eat-comment/>
     <string name="decline">Decline</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings_activity_login.xml -->
     <eat-comment/>
@@ -121,6 +126,8 @@
     <eat-comment/>
     <string name="fee_text">Fee</string>
     <string name="floor_text">Floor</string>
+    <string name="get_rating_text">Get Rating</string>
+    <string name="leave_text">Leave</string>
     <string name="locaion_text">Location</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
@@ -170,6 +177,11 @@
     <eat-comment/>
     <string name="search_distance">Search Distance</string>
     <string name="settings_distance_format">%d feet</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="shitin_text">ShitIn</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="signup">Sign up</string>
     <string name="slogan">The world is your wall</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->

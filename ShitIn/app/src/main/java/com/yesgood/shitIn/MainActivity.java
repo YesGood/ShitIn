@@ -31,6 +31,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.CancelableCallback;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -48,6 +49,7 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.yesgood.shitIn.fragments.CreateNewToilet;
+import com.yesgood.shitIn.fragments.ToiletDetail;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -57,7 +59,9 @@ import java.util.Set;
 
 public class MainActivity extends FragmentActivity implements LocationListener,
     GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener {
+    GoogleApiClient.OnConnectionFailedListener,
+        GoogleMap.OnMarkerClickListener
+{
 
   /*
    * Define a request code to send to Google Play services This code is returned in
@@ -121,6 +125,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
   // Fields for helping process map and location changes
   private final Map<String, Marker> mapMarkers = new HashMap<String, Marker>();
+    private final Map<String, ToiletDataPost> mapMarkerData = new HashMap<String, ToiletDataPost>();
   private int mostRecentMapUpdate;
   private boolean hasSetUpInitialLocation;
   private String selectedPostObjectId;
@@ -155,7 +160,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     // Set the interval ceiling to one minute
     locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
 
-    // Create a new location client, using the enclosing class to handle callbacks.
+       // Create a new location client, using the enclosing class to handle callbacks.
     locationClient = new GoogleApiClient.Builder(this)
               .addApi(LocationServices.API)
               .addConnectionCallbacks(this)
@@ -218,7 +223,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
               public void onFinish() {
                 Marker marker = mapMarkers.get(item.getObjectId());
                 if (marker != null) {
-                  marker.showInfoWindow();
+                  //marker.showInfoWindow();
                 }
               }
 
@@ -227,7 +232,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             });
         Marker marker = mapMarkers.get(item.getObjectId());
         if (marker != null) {
-          marker.showInfoWindow();
+          //marker.showInfoWindow();
         }
       }
     });
@@ -244,6 +249,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     // Enable the current location "blue dot"
     mapFragment.getMap().setMyLocationEnabled(true);
     // Set up the camera change handler
+      mapFragment.getMap().setOnMarkerClickListener(this);
     mapFragment.getMap().setOnCameraChangeListener(new OnCameraChangeListener() {
       public void onCameraChange(CameraPosition position) {
         // When the camera changes, update the query
@@ -603,14 +609,15 @@ public class MainActivity extends FragmentActivity implements LocationListener,
                 markerOpts.title(post.getText()).snippet(post.getUser().getUsername())
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));*/
             markerOpts =
-                    markerOpts.title(post.getName()).snippet("")
+                    markerOpts.title(post.getName()).snippet(post.getObjectId())
                             .icon(BitmapDescriptorFactory.fromResource(ToiletDataDefine.getTypeImageResID(post.getType())));
           }
           // Add a new marker
           Marker marker = mapFragment.getMap().addMarker(markerOpts);
           mapMarkers.put(post.getObjectId(), marker);
+            mapMarkerData.put(post.getObjectId(),post);
           if (post.getObjectId().equals(selectedPostObjectId)) {
-            marker.showInfoWindow();
+            //marker.showInfoWindow();
             selectedPostObjectId = null;
           }
         }
@@ -630,6 +637,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         marker.remove();
         mapMarkers.get(objId).remove();
         mapMarkers.remove(objId);
+          mapMarkerData.remove(objId);
       }
     }
   }
@@ -779,9 +787,18 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     }
   }
 
-  /*
-   * Define a DialogFragment to display the error dialog generated in showErrorDialog.
-   */
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        FragmentManager fm = getSupportFragmentManager();
+        ToiletDetail toiletDetail = ToiletDetail.newInstance();
+        toiletDetail.setToiletData(mapMarkerData.get(marker.getSnippet()));
+        toiletDetail.show(fm,"test");
+        return false;
+    }
+
+    /*
+     * Define a DialogFragment to display the error dialog generated in showErrorDialog.
+     */
   public static class ErrorDialogFragment extends DialogFragment {
     // Global field to contain the error dialog
     private Dialog mDialog;

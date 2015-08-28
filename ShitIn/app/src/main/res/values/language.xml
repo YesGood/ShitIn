@@ -25,4 +25,8 @@
         <item>6 up</item>
     </string-array>
     <string name="answer_all_questions">Answer all questions</string>
+    <string name="creator_text">Creator</string>
+    <string name="get_rating_text">Get Rating</string>
+    <string name="shitin_text">ShitIn</string>
+    <string name="leave_text">Leave</string>
 </resources>
