@@ -17,15 +17,6 @@ import com.yesgood.shitIn.ToiletDataPost;
  */
 public class ToiletDetail extends DialogFragment {
     private ToiletDataPost post;
-    private ImageView ivType;
-    private TextView tvFloor;
-    private TextView tvBadyChanging;
-    private TextView tvCloset;
-    private TextView tvUrinal;
-    private TextView tvFee;
-    private TextView tvPaper;
-    private TextView tvCreator;
-
 
     public static ToiletDetail newInstance(){
         ToiletDetail frag = new ToiletDetail();
@@ -41,7 +32,7 @@ public class ToiletDetail extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_toilet_detail, container, false );
 
-        ivType = (ImageView) view.findViewById(R.id.ivTypeImage);
+        ImageView ivType = (ImageView) view.findViewById(R.id.ivTypeImage);
         TextView tvFloor = (TextView) view.findViewById(R.id.tvShowFloor);
         TextView tvBadyChanging = (TextView) view.findViewById(R.id.tvShowBabyChanging);
         TextView tvCloset = (TextView) view.findViewById(R.id.tvShowCloset);

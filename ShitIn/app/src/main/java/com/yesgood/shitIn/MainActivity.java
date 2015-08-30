@@ -125,7 +125,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
   // Fields for helping process map and location changes
   private final Map<String, Marker> mapMarkers = new HashMap<String, Marker>();
-    private final Map<String, ToiletDataPost> mapMarkerData = new HashMap<String, ToiletDataPost>();
+    private final Map<Marker, ToiletDataPost> mapMarkerData = new HashMap<Marker, ToiletDataPost>();
   private int mostRecentMapUpdate;
   private boolean hasSetUpInitialLocation;
   private String selectedPostObjectId;
@@ -244,18 +244,8 @@ public class MainActivity extends FragmentActivity implements LocationListener,
               return;
           }
       }
-    // Set up the map fragment
-    mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-    // Enable the current location "blue dot"
-    mapFragment.getMap().setMyLocationEnabled(true);
-    // Set up the camera change handler
-      mapFragment.getMap().setOnMarkerClickListener(this);
-    mapFragment.getMap().setOnCameraChangeListener(new OnCameraChangeListener() {
-      public void onCameraChange(CameraPosition position) {
-        // When the camera changes, update the query
-        doMapQuery();
-      }
-    });
+
+    setupMap();
 
     // Set up the handler for the post button click
     Button postButton = (Button) findViewById(R.id.post_button);
@@ -278,6 +268,23 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         startActivity(intent);*/
       }
     });
+  }
+
+  private void setupMap( )
+  {
+    // Set up the map fragment
+    mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+    // Enable the current location "blue dot"
+    mapFragment.getMap().setMyLocationEnabled(true);
+    // Set up the camera change handler
+    mapFragment.getMap().setOnMarkerClickListener(this);
+    mapFragment.getMap().setOnCameraChangeListener(new OnCameraChangeListener() {
+      public void onCameraChange(CameraPosition position) {
+        // When the camera changes, update the query
+        doMapQuery();
+      }
+    });
+
   }
 
   /*
@@ -615,7 +622,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
           // Add a new marker
           Marker marker = mapFragment.getMap().addMarker(markerOpts);
           mapMarkers.put(post.getObjectId(), marker);
-            mapMarkerData.put(post.getObjectId(),post);
+            mapMarkerData.put(marker,post);
           if (post.getObjectId().equals(selectedPostObjectId)) {
             //marker.showInfoWindow();
             selectedPostObjectId = null;
@@ -637,7 +644,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         marker.remove();
         mapMarkers.get(objId).remove();
         mapMarkers.remove(objId);
-          mapMarkerData.remove(objId);
+          mapMarkerData.remove(marker);
       }
     }
   }
@@ -789,11 +796,12 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+
         FragmentManager fm = getSupportFragmentManager();
         ToiletDetail toiletDetail = ToiletDetail.newInstance();
-        toiletDetail.setToiletData(mapMarkerData.get(marker.getSnippet()));
+        toiletDetail.setToiletData(mapMarkerData.get(marker));
         toiletDetail.show(fm,"test");
-        return false;
+        return true;
     }
 
     /*
