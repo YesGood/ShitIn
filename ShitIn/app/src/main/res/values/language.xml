@@ -29,4 +29,15 @@
     <string name="get_rating_text">Get Rating</string>
     <string name="shitin_text">ShitIn</string>
     <string name="leave_text">Leave</string>
+    <string name="rating_text">Rating</string>
+    <string name="comment_text">Comment</string>
+    <string name="record_health_text">Health record</string>
+    <string name="action_shit_text">Take a shit</string>
+    <string name="action_urinal_text">Urinate</string>
+    <string name="status_text">Status</string>
+    <string name="normal_text">Normal</string>
+    <string name="bad_text">Bad</string>
+    <string name="good_text">Good</string>
+    <string name="post_rating_progress_text">Posting rating data ...</string>
+    <string name="post_health_progress_text">Posting health data ...</string>
 </resources>

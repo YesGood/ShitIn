@@ -242,7 +242,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_text"
-        android:id="@+id/tvName"
+        android:id="@+id/etName"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/tvBabyChanging"
         android:layout_toEndOf="@+id/tvBabyChanging" />
@@ -252,8 +252,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/etName"
         android:layout_alignTop="@+id/tvLocationData"
-        android:layout_alignLeft="@+id/tvName"
-        android:layout_alignStart="@+id/tvName" />
+        android:layout_alignLeft="@+id/etName"
+        android:layout_alignStart="@+id/etName" />
 
     <Button
         android:layout_width="wrap_content"
@@ -261,7 +261,7 @@
         android:text="@string/submit_text"
         android:id="@+id/btSubmit"
         android:layout_below="@+id/rgPaper"
-        android:layout_toRightOf="@+id/tvName" />
+        android:layout_toRightOf="@+id/etName" />
 
     <Button
         android:layout_width="wrap_content"

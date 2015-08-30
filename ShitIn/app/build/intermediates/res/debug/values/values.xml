@@ -48,6 +48,9 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/ConstDefine.xml -->
+    <eat-comment/>
+    <integer name="COMMENT_MAX_LEN">140</integer>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/version.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">6587000</integer>
@@ -57,6 +60,12 @@
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="action_shit_text">Take a shit</string>
+    <string name="action_urinal_text">Urinate</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="activity_post_title">Create a Post</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
     <eat-comment/>
@@ -67,6 +76,7 @@
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
     <eat-comment/>
     <string name="babychanging_text">Bady changing</string>
+    <string name="bad_text">Bad</string>
     <string name="cancel_text">Cancel</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
@@ -74,6 +84,7 @@
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
     <eat-comment/>
     <string name="closet_text">Closet</string>
+    <string name="comment_text">Comment</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
@@ -127,6 +138,7 @@
     <string name="fee_text">Fee</string>
     <string name="floor_text">Floor</string>
     <string name="get_rating_text">Get Rating</string>
+    <string name="good_text">Good</string>
     <string name="leave_text">Leave</string>
     <string name="locaion_text">Location</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
@@ -140,6 +152,7 @@
     <eat-comment/>
     <string name="name_text">Name</string>
     <string name="no_text">No</string>
+    <string name="normal_text">Normal</string>
     <string name="paper_text">Toilet Paper</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
@@ -151,7 +164,17 @@
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="post">Post</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="post_health_progress_text">Posting health data ...</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="post_out_of_range">Can\'t view post! Get closer.</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="post_rating_progress_text">Posting rating data ...</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="powered_by">Powered by</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
     <eat-comment/>
@@ -173,6 +196,10 @@
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings_activity_login.xml -->
     <eat-comment/>
     <string name="prompt_username">Username</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="rating_text">Rating</string>
+    <string name="record_health_text">Health record</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="search_distance">Search Distance</string>
@@ -184,6 +211,9 @@
     <eat-comment/>
     <string name="signup">Sign up</string>
     <string name="slogan">The world is your wall</string>
+    <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/values/language.xml -->
+    <eat-comment/>
+    <string name="status_text">Status</string>
     <!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>

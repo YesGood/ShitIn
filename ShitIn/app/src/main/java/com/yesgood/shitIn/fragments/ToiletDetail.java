@@ -2,9 +2,11 @@ package com.yesgood.shitIn.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +34,7 @@ public class ToiletDetail extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_toilet_detail, container, false );
 
+        TextView tvDetailShowName = (TextView) view.findViewById(R.id.tvDetailShowName);
         ImageView ivType = (ImageView) view.findViewById(R.id.ivTypeImage);
         TextView tvFloor = (TextView) view.findViewById(R.id.tvShowFloor);
         TextView tvBadyChanging = (TextView) view.findViewById(R.id.tvShowBabyChanging);
@@ -40,7 +43,29 @@ public class ToiletDetail extends DialogFragment {
         TextView tvFee = (TextView) view.findViewById(R.id.tvShowFee);
         TextView tvPaper = (TextView) view.findViewById(R.id.tvShowPaper);
         TextView tvCreator = (TextView) view.findViewById(R.id.tvShowCreator);
+        Button btShitIn = (Button) view.findViewById(R.id.btShitIn);
+        Button btCancel = (Button) view.findViewById(R.id.btLeave);
 
+        btShitIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                CheckIn checkIn = CheckIn.newInstance();
+                checkIn.setToiletName(post.getName());
+                checkIn.setToiletObjectId(post.getObjectId());
+                checkIn.show(fm,"test");
+                dismiss();
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        tvDetailShowName.setText(post.getName());
         ivType.setImageResource(ToiletDataDefine.getTypeImageResID(post.getType()));
         tvFloor.setText(Integer.toString(post.getFloor()));
         tvBadyChanging.setText(ToiletDataDefine.getBabyChangingText(getActivity(), post.getBadyChanging()));
