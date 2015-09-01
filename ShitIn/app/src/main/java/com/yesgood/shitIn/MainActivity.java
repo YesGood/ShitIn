@@ -583,6 +583,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
               new MarkerOptions().position(new LatLng(post.getLocation().getLatitude(), post
                   .getLocation().getLongitude()));
           // Set up the marker properties based on if it is within the search radius
+          /*
           if (post.getLocation().distanceInKilometersTo(myPoint) > radius * METERS_PER_FEET
               / METERS_PER_KILOMETER) {
             // Check for an existing out of range marker
@@ -600,6 +601,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
                 markerOpts.title(getResources().getString(R.string.post_out_of_range)).icon(
                     BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
           } else {
+          */
             // Check for an existing in range marker
             if (oldMarker != null) {
               if (oldMarker.getSnippet() != null) {
@@ -617,7 +619,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             markerOpts =
                     markerOpts.title(post.getName()).snippet(post.getObjectId())
                             .icon(BitmapDescriptorFactory.fromResource(ToiletDataDefine.getTypeImageResID(post.getType())));
-          }
+          //}
           // Add a new marker
           Marker marker = mapFragment.getMap().addMarker(markerOpts);
           mapMarkers.put(post.getObjectId(), marker);
@@ -795,7 +797,8 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-
+        ParseGeoPoint gp = mapMarkerData.get(marker).getLocation();
+        updateZoom(new LatLng(gp.getLatitude(), gp.getLongitude()));
         FragmentManager fm = getSupportFragmentManager();
         ToiletDetail toiletDetail = ToiletDetail.newInstance();
         toiletDetail.setToiletData(mapMarkerData.get(marker));

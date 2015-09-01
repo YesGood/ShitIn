@@ -33,3 +33,10 @@ The following **optional** features are implemented:
 <img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/setting.png' title='Setting' width='' alt='Setting' />
 
 <img src='https://raw.githubusercontent.com/YesGood/ShitIn/master/wireframe/report.png' title='Report' width='' alt='Report' />
+
+##Walkthrough
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/YesGood/ShitIn/blob/master/ShitInV1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).

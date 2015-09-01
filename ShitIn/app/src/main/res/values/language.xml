@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="locaion_text">Location</string>
-    <string name="name_text">Name</string>
-    <string name="type_text">type</string>
+    <string name="name_text">Give this toilet a name</string>
+    <string name="type_text">Toilet Type</string>
     <string name="floor_text">Floor</string>
-    <string name="babychanging_text">Bady changing</string>
-    <string name="closet_text">Closet</string>
-    <string name="urinal_text">Urinal</string>
-    <string name="fee_text">Fee</string>
-    <string name="paper_text">Toilet Paper</string>
-    <string name="private_text">Private</string>
+    <string name="babychanging_text">Baby changing avaliable?</string>
+    <string name="closet_text">Closet count</string>
+    <string name="urinal_text">Urinal count</string>
+    <string name="fee_text">Chaging fee?</string>
+    <string name="paper_text">Free Toilet Paper?</string>
+    <string name="private_text">Make here as Private Toilet</string>
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
     <string name="submit_text">Submit</string>
     <string name="cancel_text">Cancel</string>
     <string-array name="closet_numeric_array">
-        <item>1~3</item>
-        <item>4~6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>3~5</item>
         <item>6 up</item>
     </string-array>
     <string-array name="urinal_numeric_array">
-        <item>1~3</item>
-        <item>4~6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>3~5</item>
         <item>6 up</item>
     </string-array>
     <string name="answer_all_questions">Answer all questions</string>
+
+    <string name="type_men">Men</string>
+    <string name="type_woman">Woman</string>
+    <string name="type_both">M\//W</string>
+    <string name="type_family">Family</string>
+    <string name="type_handicap">Handicap</string>
+
     <string name="creator_text">Creator</string>
     <string name="get_rating_text">Get Rating</string>
     <string name="shitin_text">ShitIn</string>
@@ -40,4 +49,5 @@
     <string name="good_text">Good</string>
     <string name="post_rating_progress_text">Posting rating data ...</string>
     <string name="post_health_progress_text">Posting health data ...</string>
+>>>>>>> 7a9cfad8ab92fe0de0e8a228a481d4824ec3da60
 </resources>

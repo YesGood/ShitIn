@@ -7,12 +7,12 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseACL;
@@ -21,8 +21,11 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.yesgood.shitIn.R;
-import com.yesgood.shitIn.ToiletDataDefine;
 import com.yesgood.shitIn.ToiletDataPost;
+
+import static com.yesgood.shitIn.ToiletDataDefine.getTypeImageResID;
+import static com.yesgood.shitIn.ToiletDataDefine.getTypeIndex;
+import static com.yesgood.shitIn.ToiletDataDefine.getType_index;
 
 
 /**
@@ -32,13 +35,17 @@ public class CreateNewToilet extends DialogFragment {
     private Location location;
     private EditText etName;
     private RadioGroup rgType;
-    private EditText etFloor;
-    private RadioGroup rgBabyChanging;
-    private Spinner closetSpinner;
-    private Spinner urinalSpinner;
-    private EditText etFee;
-    private RadioGroup rgPaper;
-    private RadioGroup rgPrivate;
+    private NumberPicker npFloor;
+    private NumberPicker npCloset;
+    private NumberPicker npUrinal;
+    private Button btSubmit;
+    private Button btCancel;
+    private CheckBox cbBabyChanging;
+    private CheckBox cbToiletPaper;
+    private CheckBox cbFee;
+    private CheckBox cbPrivate;
+    public final static int MAX_FLOOR = 101;
+    public final static int MIN_FLOOR = -10;
 
     public static CreateNewToilet newInstance(){
         CreateNewToilet frag = new CreateNewToilet();
@@ -52,43 +59,95 @@ public class CreateNewToilet extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate( R.layout.fragment_create_new_toilet, container, false);
 
         etName = (EditText) view.findViewById(R.id.etName);
         rgType = (RadioGroup) view.findViewById(R.id.rgType);
-        etFloor = (EditText) view.findViewById(R.id.etFloor);
-        rgBabyChanging = (RadioGroup) view.findViewById(R.id.rgBadyChanging);
-        etFee = (EditText) view.findViewById(R.id.etFee);
-        rgPaper = (RadioGroup) view.findViewById(R.id.rgPaper);
-        rgPrivate = (RadioGroup) view.findViewById(R.id.rgPrivate);
-        closetSpinner = (Spinner) view.findViewById(R.id.spCloset);
-        urinalSpinner = (Spinner) view.findViewById(R.id.spUrinal);
-        TextView locationText = (TextView) view.findViewById(R.id.tvLocationData);
-        Button btSubmit = (Button) view.findViewById(R.id.btSubmit);
-        Button btCancel = (Button) view.findViewById(R.id.btCancel);
+        npFloor = (NumberPicker) view.findViewById(R.id.npFloor);
+        npCloset = (NumberPicker) view.findViewById(R.id.npCloset);
+        npUrinal = (NumberPicker) view.findViewById(R.id.npUrinal);
 
-        locationText.setText(location.toString());
-        ArrayAdapter<CharSequence> closetAdapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.closet_numeric_array, android.R.layout.simple_spinner_item);
+        btSubmit = (Button) view.findViewById(R.id.btSubmit);
+        btCancel = (Button) view.findViewById(R.id.btCancel);
+        cbBabyChanging = (CheckBox) view.findViewById(R.id.cbBabyChanging);
+        cbFee = (CheckBox) view.findViewById(R.id.cbFee);
+        cbToiletPaper = (CheckBox) view.findViewById(R.id.cbToiletPaper);
+        cbPrivate = (CheckBox) view.findViewById(R.id.cbPrivate);
+        setupView();
 
-        ArrayAdapter<CharSequence> urinalAdapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.urinal_numeric_array, android.R.layout.simple_spinner_item);
+        return view;
+    }
+
+    private void setupView()
+    {
+       // locationText.setText(location.toString());
 
 
+
+        rgType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Integer[] ar = getType_index();
+                for (int i = 0; i < ar.length; i++) {
+                    int id = ar[i];
+
+                    RadioButton rb = (RadioButton) group.findViewById(id);
+
+                    rb.setCompoundDrawablesWithIntrinsicBounds(null,
+                            getResources().getDrawable(
+                                    getTypeImageResID(
+                                            getTypeIndex(id), (checkedId == id)
+                                    )
+                            ), null, null);
+
+                }
+            }
+        });
         rgType.check(R.id.type_man);
-        rgBabyChanging.check(R.id.bady_changeing_no);
-        rgPaper.check(R.id.paper_yes);
-        rgPrivate.check(R.id.private_no);
 
-        closetSpinner.setAdapter(closetAdapter);
-        urinalSpinner.setAdapter(urinalAdapter);
+        String[] closets = getResources().getStringArray( R.array.closet_numeric_array);
+        npCloset.setMinValue(0);
+        npCloset.setMaxValue(closets.length - 1);
+        npCloset.setDisplayedValues(closets);
+        npCloset.setValue(0);
+        npCloset.setWrapSelectorWheel(false);
+        npCloset.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+        String[] urinals = getResources().getStringArray( R.array.urinal_numeric_array);
+        npUrinal.setMaxValue(0);
+        npUrinal.setMaxValue(urinals.length - 1);
+        npUrinal.setDisplayedValues(urinals);
+        npUrinal.setValue(0);
+        npUrinal.setWrapSelectorWheel(false);
+        npUrinal.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+
+        npFloor.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int index) {
+                int floor = index + MIN_FLOOR;
+                if (floor < 0)
+                    return "B" + Integer.toString(-1 * floor);
+                else if (floor == 0)
+                    return "0";
+                return Integer.toString(floor) + "F";
+            }
+        });
+        npFloor.setMinValue(0);
+        npFloor.setMaxValue(MAX_FLOOR - MIN_FLOOR);
+
+        npFloor.setValue(-MIN_FLOOR);
+        npFloor.setWrapSelectorWheel(false);
+        npFloor.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etFloor.length() == 0 || etFee.length() == 0 || etName.length() == 0)
+                if(etName.length() == 0)
                 {
-                    Toast.makeText(getActivity(),R.string.answer_all_questions,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.answer_all_questions, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 post();
@@ -103,19 +162,17 @@ public class CreateNewToilet extends DialogFragment {
                 dismiss();
             }
         });
-
-        return view;
     }
     private void post () {
         String name = etName.getText().toString();
-        int type = ToiletDataDefine.getTypeIndex(rgType.getCheckedRadioButtonId());
-        int floor = Integer.parseInt(etFloor.getText().toString());
-        boolean babyChanging = ToiletDataDefine.getBabyChangingIndex(rgBabyChanging.getCheckedRadioButtonId());
-        int fee =Integer.parseInt(etFee.getText().toString());
-        boolean paper = ToiletDataDefine.getPaperIndex(rgPaper.getCheckedRadioButtonId());
-        boolean pirvate = ToiletDataDefine.getPrivateIndex(rgPrivate.getCheckedRadioButtonId());
-        int closetNum = closetSpinner.getSelectedItemPosition();
-        int urinalNum = urinalSpinner.getSelectedItemPosition();
+        int type = getTypeIndex(rgType.getCheckedRadioButtonId());
+        int floor = npFloor.getValue() + MIN_FLOOR;
+        boolean babyChanging = cbBabyChanging.isChecked();
+        int fee = (cbFee.isChecked())?1:0;
+        boolean paper = cbToiletPaper.isChecked();
+        boolean pirvate = cbPrivate.isChecked();
+        int closetNum = npCloset.getValue();
+        int urinalNum = npUrinal.getValue();
         ParseUser user = ParseUser.getCurrentUser();
 
         // Set up a progress dialog
@@ -161,4 +218,12 @@ public class CreateNewToilet extends DialogFragment {
         });
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        int style = DialogFragment.STYLE_NORMAL, theme = 0;
+        theme = R.style.AppTheme;
+        setStyle(style, theme);
+    }
 }
