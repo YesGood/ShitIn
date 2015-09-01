@@ -128,4 +128,12 @@ public class CheckIn extends DialogFragment {
             }
         });
     }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        int style = DialogFragment.STYLE_NORMAL, theme = 0;
+        theme = R.style._FragmentTheme;
+        setStyle(style, theme);
+    }
 }

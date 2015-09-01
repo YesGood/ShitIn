@@ -45,7 +45,7 @@ public class ToiletDetail extends DialogFragment {
     private void setupMap( )
     {
         // Set up the map fragment
-        mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.detail_map_fragment);
+      //  mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.detail_map_fragment);
     }
 
     @Override

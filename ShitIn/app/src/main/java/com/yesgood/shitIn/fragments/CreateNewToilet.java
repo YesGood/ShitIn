@@ -220,7 +220,7 @@ public class CreateNewToilet extends DialogFragment {
         super.onCreate(savedInstanceState);
 
         int style = DialogFragment.STYLE_NORMAL, theme = 0;
-        theme = R.style.AppTheme;
+        theme = R.style._FragmentTheme;
         setStyle(style, theme);
     }
 }
