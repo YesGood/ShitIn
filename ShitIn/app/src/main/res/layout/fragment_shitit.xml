@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_text"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/etName"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rating_text"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/etName"
+        android:layout_centerHorizontal="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbRatingBar"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:numStars="5"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comment_text"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/rbRatingBar"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etComment"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:maxLength="@integer/COMMENT_MAX_LEN" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/record_health_text"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/etComment"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type_text"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:id="@+id/rgType">
+        <RadioButton
+            android:id="@+id/type_shit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_shit_text" />
+
+        <RadioButton
+            android:id="@+id/type_urinate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_urinal_text" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/status_text"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/rgType"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:id="@+id/rgStatus">
+        <RadioButton
+            android:id="@+id/status_bad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bad_text" />
+        <RadioButton
+            android:id="@+id/status_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/normal_text" />
+        <RadioButton
+            android:id="@+id/status_good"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/good_text" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_text"
+        android:id="@+id/btSubmit"
+        android:layout_below="@+id/rgStatus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_text"
+        android:id="@+id/btCancel"
+        android:layout_below="@+id/rgStatus"
+        android:layout_toRightOf="@+id/btSubmit"
+        android:layout_toEndOf="@+id/btSubmit" />
+
+</RelativeLayout>

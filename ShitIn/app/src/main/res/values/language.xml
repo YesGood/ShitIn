@@ -27,9 +27,27 @@
         <item>6 up</item>
     </string-array>
     <string name="answer_all_questions">Answer all questions</string>
+<<<<<<< HEAD
     <string name="type_men">Men</string>
     <string name="type_woman">Woman</string>
     <string name="type_both">M\/\/W</string>
     <string name="type_family">Family</string>
     <string name="type_handicap">Handicap</string>
+=======
+    <string name="creator_text">Creator</string>
+    <string name="get_rating_text">Get Rating</string>
+    <string name="shitin_text">ShitIn</string>
+    <string name="leave_text">Leave</string>
+    <string name="rating_text">Rating</string>
+    <string name="comment_text">Comment</string>
+    <string name="record_health_text">Health record</string>
+    <string name="action_shit_text">Take a shit</string>
+    <string name="action_urinal_text">Urinate</string>
+    <string name="status_text">Status</string>
+    <string name="normal_text">Normal</string>
+    <string name="bad_text">Bad</string>
+    <string name="good_text">Good</string>
+    <string name="post_rating_progress_text">Posting rating data ...</string>
+    <string name="post_health_progress_text">Posting health data ...</string>
+>>>>>>> 7a9cfad8ab92fe0de0e8a228a481d4824ec3da60
 </resources>

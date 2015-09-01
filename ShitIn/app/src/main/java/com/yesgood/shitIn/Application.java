@@ -33,6 +33,8 @@ public class Application extends android.app.Application {
     super.onCreate();
 
     ParseObject.registerSubclass(ToiletDataPost.class);
+    ParseObject.registerSubclass(RatingDataPost.class);
+    ParseObject.registerSubclass(HealthDataPost.class);
     Parse.initialize(this,getResources().getString(R.string.parse_apiId),
         getResources().getString(R.string.parse_clientkey));
 
