@@ -27,13 +27,13 @@
         <item>6 up</item>
     </string-array>
     <string name="answer_all_questions">Answer all questions</string>
-<<<<<<< HEAD
+
     <string name="type_men">Men</string>
     <string name="type_woman">Woman</string>
     <string name="type_both">M\/\/W</string>
     <string name="type_family">Family</string>
     <string name="type_handicap">Handicap</string>
-=======
+
     <string name="creator_text">Creator</string>
     <string name="get_rating_text">Get Rating</string>
     <string name="shitin_text">ShitIn</string>
