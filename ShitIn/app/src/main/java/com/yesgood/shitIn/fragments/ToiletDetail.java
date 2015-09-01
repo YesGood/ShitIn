@@ -8,9 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.SupportMapFragment;
+import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 import com.yesgood.shitIn.R;
+import com.yesgood.shitIn.RatingDataPost;
 import com.yesgood.shitIn.ToiletDataDefine;
 import com.yesgood.shitIn.ToiletDataPost;
 
@@ -18,7 +24,13 @@ import com.yesgood.shitIn.ToiletDataPost;
  * Created by hsuanlin on 2015/8/28.
  */
 public class ToiletDetail extends DialogFragment {
+    private static int MAX_POST_SEARCH_RESULTS = 10;
+
+    // Map fragment
+    private SupportMapFragment mapFragment;
     private ToiletDataPost post;
+    // Adapter for the Parse query
+    private ParseQueryAdapter<RatingDataPost> postsQueryAdapter;
 
     public static ToiletDetail newInstance(){
         ToiletDetail frag = new ToiletDetail();
@@ -28,6 +40,18 @@ public class ToiletDetail extends DialogFragment {
     public void setToiletData( ToiletDataPost data )
     {
         post = data;
+    }
+
+    private void setupMap( )
+    {
+        // Set up the map fragment
+        mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.detail_map_fragment);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupMap();
     }
 
     @Override
@@ -45,6 +69,7 @@ public class ToiletDetail extends DialogFragment {
         TextView tvCreator = (TextView) view.findViewById(R.id.tvShowCreator);
         Button btShitIn = (Button) view.findViewById(R.id.btShitIn);
         Button btCancel = (Button) view.findViewById(R.id.btLeave);
+        ListView lvRatingList = (ListView) view.findViewById( R.id.lvRatingList );
 
         btShitIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +100,58 @@ public class ToiletDetail extends DialogFragment {
         tvPaper.setText(ToiletDataDefine.getPaperText(getActivity(), post.getToiletPaper()));
         tvCreator.setText(post.getUser().getUsername());
 
+        // Set up a customized query
+        ParseQueryAdapter.QueryFactory<RatingDataPost> factory =
+                new ParseQueryAdapter.QueryFactory<RatingDataPost>() {
+                    public ParseQuery<RatingDataPost> create() {
+                        ParseQuery<RatingDataPost> query = RatingDataPost.getQuery();
+                        query.include("user");
+                        query.orderByDescending("createdAt");
+                        query.whereEqualTo("toiletObjectId",post.getObjectId());
+                        query.setLimit(MAX_POST_SEARCH_RESULTS);
+
+                        return query;
+                    }
+                };
+
+        // Set up the query adapter
+        postsQueryAdapter = new ParseQueryAdapter<RatingDataPost>(getActivity().getApplicationContext(), factory) {
+            @Override
+            public View getItemView(RatingDataPost post, View view, ViewGroup parent) {
+                if (view == null) {
+                    view = View.inflate(getContext(), R.layout.rating_item, null);
+                }
+
+                TextView tvName = (TextView) view.findViewById(R.id.tvCreator);
+                RatingBar rbRating = (RatingBar) view.findViewById(R.id.rbRating);
+                TextView tvCreatedTime = (TextView) view.findViewById(R.id.tvCreatedTime);
+                TextView tvComment = (TextView) view.findViewById(R.id.tvComment);
+
+                tvName.setText(post.getUser().getUsername());
+                rbRating.setRating(((float) post.getRating()));
+                android.text.format.DateFormat df = new android.text.format.DateFormat();
+                tvCreatedTime.setText(df.format("yyyy/MM/dd",post.getCreatedAt()));
+                tvComment.setText(post.getComment().toString());
+
+                return view;
+            }
+        };
+
+        postsQueryAdapter.setAutoload(false);
+        postsQueryAdapter.setObjectsPerPage(6);
+        postsQueryAdapter.setPaginationEnabled(true);
+        lvRatingList.setAdapter(postsQueryAdapter);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if( post != null )
+        {
+            postsQueryAdapter.loadObjects();;
+        }
+
     }
 }

@@ -174,7 +174,6 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
             ParseQuery<ToiletDataPost> query = ToiletDataPost.getQuery();
               ParseQuery<ToiletDataPost> query1 = ToiletDataPost.getQuery();
-              query1.whereEqualTo("text", String.valueOf("Test1"));
             query.include("user");
             query.orderByDescending("createdAt");
             query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
