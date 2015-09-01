@@ -23,6 +23,7 @@ import com.parse.SaveCallback;
 import com.yesgood.shitIn.R;
 import com.yesgood.shitIn.ToiletDataPost;
 
+import static com.yesgood.shitIn.ToiletDataDefine.getFloorText;
 import static com.yesgood.shitIn.ToiletDataDefine.getTypeImageResID;
 import static com.yesgood.shitIn.ToiletDataDefine.getTypeIndex;
 import static com.yesgood.shitIn.ToiletDataDefine.getType_index;
@@ -127,11 +128,7 @@ public class CreateNewToilet extends DialogFragment {
             @Override
             public String format(int index) {
                 int floor = index + MIN_FLOOR;
-                if (floor < 0)
-                    return "B" + Integer.toString(-1 * floor);
-                else if (floor == 0)
-                    return "0";
-                return Integer.toString(floor) + "F";
+                return getFloorText(floor);
             }
         });
         npFloor.setMinValue(0);

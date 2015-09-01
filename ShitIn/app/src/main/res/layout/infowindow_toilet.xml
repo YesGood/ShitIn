@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:clickable="false">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="10dip"
+        android:minHeight="10dip"
+        android:id="@+id/btnFloor"
+        android:background="@mipmap/ic_circle"
+        android:padding="1dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="101F"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvName"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@+id/btnFloor"
+        android:layout_alignTop="@+id/btnFloor"
+        android:layout_alignBottom="@+id/btnFloor"
+        android:layout_alignRight="@+id/ivFee"
+        android:maxLines="2"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="10dip"
+        android:minHeight="10dip"
+        android:id="@+id/ivBabyChanging"
+        android:src="@mipmap/ic_baby_changing_off"
+        android:layout_below="@+id/btnFloor"
+        android:padding="1dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="10dip"
+        android:minHeight="10dip"
+        android:id="@+id/ivToiletPaper"
+        android:src="@mipmap/ic_toilet_paper_off"
+        android:layout_below="@+id/btnFloor"
+        android:padding="1dp"
+        android:layout_toRightOf="@+id/ivBabyChanging"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="10dip"
+        android:minHeight="10dip"
+        android:id="@+id/ivFee"
+        android:src="@mipmap/ic_fee_off"
+        android:layout_below="@+id/btnFloor"
+        android:layout_toRightOf="@+id/ivToiletPaper"
+
+        android:padding="1dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shitin_text"
+        android:id="@+id/btShitIn"
+        android:layout_below="@+id/ivBabyChanging"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/ivFee"
+        android:drawableLeft="@mipmap/ic_launcher"/>
+
+</RelativeLayout>
