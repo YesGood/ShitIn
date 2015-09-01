@@ -22,4 +22,4 @@
         android:id="@+id/tvType"
         android:layout_gravity="center_horizontal" />
 
-</LinearLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/layout/anywall_post_item.xml -->
+</LinearLayout><!-- From: file:/Users/bass/android/ShitIn/ShitIn/app/src/main/res/layout/anywall_post_item.xml -->

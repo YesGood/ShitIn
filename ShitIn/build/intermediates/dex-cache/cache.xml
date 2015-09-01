@@ -2,67 +2,46 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\hsuanlin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
+        jar="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136">
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/classes-2a69a109114c99792bea5ce3261e16ce1caa132e.jar" />
+    </item>
+    <item
+        jar="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/classes-2c5c4874f08157b8f488ac3e4d5d04270cfaa41d.jar" />
+    </item>
+    <item
+        jar="/Users/bass/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-aaec808497a4a05084ba41ff16d2146bd0147e9f.jar" />
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-3bc04da0851e415fcf4e85f17e5d3dede34606d4.jar" />
     </item>
     <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\pre-dexed\debug\classes-89fb2574c203c537ec8e27ba868139ded6e6ec4b.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\pre-dexed\debug\classes-2c559eaa11c824421db420b8f79d495fb5152275.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\pre-dexed\debug\classes-9ca3631cf8aed1687728cad1a5aa9301dc858372.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\libs\Parse-1.6.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="2a812174191af5a4513a873602a765b0171f252c">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\pre-dexed\debug\Parse-1.6.0-e1a8129402c5007aaa5c900d851097c367e74199.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\libs\internal_impl-21.0.0.jar"
+        jar="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/jars/libs/internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-9f9333b782158bc04ad746d1aec2057d0ed777d6.jar" />
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-2a1c9c8d945dd0e43108e424635c041da1bc8d4d.jar" />
     </item>
     <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\jars\libs\internal_impl-21.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-945363e0bdc271747c384396968d2775bd0cdbe8.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\ShitIn\ShitIn\app\build\intermediates\pre-dexed\debug\classes-9c446774c2aa3071a57094cd6ec051daa3e31f6e.jar" />
-    </item>
-    <item
-        jar="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\libs\Parse-1.6.0.jar"
+        jar="/Users/bass/android/ShitIn/ShitIn/app/libs/Parse-1.6.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="2a812174191af5a4513a873602a765b0171f252c">
-        <dex dex="C:\Users\hsuanlin\AndroidStudioProjects\AnyWall\Anywall\app\build\intermediates\pre-dexed\debug\Parse-1.6.0-8c5e9c90eaff61f9001d02597cc24718168c6e1d.jar" />
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/Parse-1.6.0-2056dfcc71c5b703010d01b5124ccf2c1cbdb301.jar" />
+    </item>
+    <item
+        jar="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/bass/android/ShitIn/ShitIn/app/build/intermediates/pre-dexed/debug/classes-28b7eca3139b2010c926f6813e47cfdf9296f967.jar" />
     </item>
 
 </items>

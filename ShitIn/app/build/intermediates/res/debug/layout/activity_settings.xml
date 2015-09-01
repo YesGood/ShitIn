@@ -38,4 +38,4 @@
         android:layout_alignParentEnd="true"
         android:text="@string/logout_full" />
 
-</RelativeLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/layout/activity_settings.xml -->
+</RelativeLayout><!-- From: file:/Users/bass/android/ShitIn/ShitIn/app/src/main/res/layout/activity_settings.xml -->

@@ -62,4 +62,4 @@
         android:text="@string/slogan"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-</RelativeLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/layout/activity_welcome.xml -->
+</RelativeLayout><!-- From: file:/Users/bass/android/ShitIn/ShitIn/app/src/main/res/layout/activity_welcome.xml -->

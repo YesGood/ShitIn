@@ -50,4 +50,4 @@
         android:layout_toRightOf="@+id/post_button"
         android:layout_toEndOf="@+id/post_button" />
 
-</RelativeLayout><!-- From: file:/C:/Users/hsuanlin/AndroidStudioProjects/ShitIn/ShitIn/app/src/main/res/layout/activity_post.xml -->
+</RelativeLayout><!-- From: file:/Users/bass/android/ShitIn/ShitIn/app/src/main/res/layout/activity_post.xml -->
