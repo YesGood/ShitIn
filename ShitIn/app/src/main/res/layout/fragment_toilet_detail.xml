@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="@string/type_text"
         android:id="@+id/tvDetailType"
-        android:layout_below="@+id/tvDetailName"
+        android:layout_below="@+id/tvDetailShowName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingRight="5dp"
@@ -179,26 +179,17 @@
         android:layout_toRightOf="@+id/tvDetailCreator"
         android:layout_toEndOf="@+id/tvDetailCreator" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/get_rating_text"
-        android:id="@+id/btRating"
-        android:layout_below="@+id/tvDetailCreator"
-        android:layout_alignRight="@+id/tvShowCreator"
-        android:layout_alignEnd="@+id/tvShowCreator"
-        android:layout_marginTop="29dp"
-        android:paddingRight="5dp" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/shitin_text"
         android:id="@+id/btShitIn"
-        android:layout_alignTop="@+id/btRating"
-        android:layout_toRightOf="@+id/btRating"
-        android:layout_toEndOf="@+id/btRating"
-        android:paddingRight="5dp" />
+        android:paddingRight="5dp"
+        android:layout_below="@+id/tvDetailCreator"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -208,5 +199,13 @@
         android:layout_alignTop="@+id/btShitIn"
         android:layout_toRightOf="@+id/btShitIn"
         android:layout_toEndOf="@+id/btShitIn" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvRatingList"
+        android:layout_below="@+id/btShitIn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
