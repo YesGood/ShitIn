@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="map_key"></string>
-    <string name="parse_apiId"></string>
-    <string name="parse_clientkey"></string>
+    <string name="map_key">AIzaSyDINWeHMBw6ZgjguwhPhC7tx4xUkOleV8Q</string>
+    <string name="parse_apiId">AehLtlyhL3PrqUl5vB155TeK2SzXjWzLC8AOSx8X</string>
+    <string name="parse_clientkey">jgbDdNnjS4vLGRGwqWBWYYuZJ2fkYdrttmJLzHWT</string>
 </resources>
