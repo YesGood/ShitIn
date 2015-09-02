@@ -51,8 +51,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.yesgood.shitIn.fragments.CheckIn;
 import com.yesgood.shitIn.fragments.CreateNewToilet;
-import com.yesgood.shitIn.fragments.HealthReport;
-import com.yesgood.shitIn.fragments.ToiletDetail;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -215,7 +213,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     postsQueryAdapter.setPaginationEnabled(false);
 
     // Attach the query adapter to the view
-    ListView postsListView = (ListView) findViewById(R.id.posts_listview);
+    final ListView postsListView = (ListView) findViewById(R.id.posts_listview);
     postsListView.setAdapter(postsQueryAdapter);
 
     // Set up the handler for an item's selection
@@ -279,9 +277,11 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     reportButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        FragmentManager fm = getSupportFragmentManager();
+/*        FragmentManager fm = getSupportFragmentManager();
         HealthReport healthReport = HealthReport.newInstance();
-        healthReport.show(fm,"test");
+        healthReport.show(fm,"test");*/
+        Intent i = new Intent(v.getContext(), HealthReportActivity.class);
+        startActivity(i);
       }
     });
   }
