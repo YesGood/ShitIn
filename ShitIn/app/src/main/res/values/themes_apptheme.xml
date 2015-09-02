@@ -4,6 +4,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
   <style name="_FragmentTheme" parent="Theme.AppCompat.Light.Dialog">
+    <item name="android:windowBackground">@color/theme_color_background</item>
+    <item name="android:colorBackground">@color/theme_color_background</item>
 
     <item name="android:editTextStyle">@style/EditTextAppTheme</item>
 
@@ -43,7 +45,8 @@
 
   </style>
   <style name="_AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
+    <item name="android:windowBackground">@color/theme_color_background</item>
+    <item name="android:colorBackground">@color/theme_color_background</item>
     <item name="android:editTextStyle">@style/EditTextAppTheme</item>
 
     <item name="android:textColorHighlight">#9999cc00</item>

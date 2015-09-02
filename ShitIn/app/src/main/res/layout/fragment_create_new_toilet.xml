@@ -184,8 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/submit_text"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btCancel"
@@ -195,7 +194,6 @@
             android:layout_toRightOf="@+id/btSubmit"
             android:lines="1"
             android:text="@string/cancel_text"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceSmallInverse" />
+            android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>
