@@ -42,18 +42,6 @@ public class ToiletDetail extends DialogFragment {
         post = data;
     }
 
-    private void setupMap( )
-    {
-        // Set up the map fragment
-        mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.detail_map_fragment);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setupMap();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_toilet_detail, container, false );
@@ -107,7 +95,7 @@ public class ToiletDetail extends DialogFragment {
                         ParseQuery<RatingDataPost> query = RatingDataPost.getQuery();
                         query.include("user");
                         query.orderByDescending("createdAt");
-                        query.whereEqualTo("toiletObjectId",post.getObjectId());
+                        query.whereEqualTo("toiletObjectId", post.getObjectId());
                         query.setLimit(MAX_POST_SEARCH_RESULTS);
 
                         return query;

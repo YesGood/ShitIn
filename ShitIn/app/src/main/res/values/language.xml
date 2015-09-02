@@ -49,5 +49,7 @@
     <string name="good_text">Good</string>
     <string name="post_rating_progress_text">Posting rating data ...</string>
     <string name="post_health_progress_text">Posting health data ...</string>
->>>>>>> 7a9cfad8ab92fe0de0e8a228a481d4824ec3da60
+    <string name="report_text">My health report</string>
+    <string name="last_urinate_text">Last urinate:</string>
+    <string name="no_data_text">no data</string>
 </resources>

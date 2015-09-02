@@ -2,61 +2,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name_text"
-        android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/rlRatingGroup">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_text"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/etName"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/etName"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rating_text"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/etName"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating_text"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/etName"
+            android:layout_centerHorizontal="true" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rbRatingBar"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:numStars="5"
-        android:stepSize="0.5" />
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbRatingBar"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:numStars="5"
+            android:stepSize="0.5" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/comment_text"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/rbRatingBar"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comment_text"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/rbRatingBar"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/etComment"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:maxLength="@integer/COMMENT_MAX_LEN" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etComment"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:maxLength="@integer/COMMENT_MAX_LEN" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibClose"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/ic_close"
+            android:layout_above="@+id/rbRatingBar" />
+    </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/record_health_text"
         android:id="@+id/textView4"
-        android:layout_below="@+id/etComment"
+        android:layout_below="@+id/rlRatingGroup"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -136,5 +153,6 @@
         android:layout_below="@+id/rgStatus"
         android:layout_toRightOf="@+id/btSubmit"
         android:layout_toEndOf="@+id/btSubmit" />
+
 
 </RelativeLayout>

@@ -31,16 +31,6 @@ public class HealthDataPost extends ParseObject {
         return getString("type");
     }
 
-    public void setToiletObjectId( String value )
-    {
-        put("toiletObjectId",value);
-    }
-
-    public String getToiletObjectId()
-    {
-        return getString("toiletObjectId");
-    }
-
     public ParseUser getUser() {
         return getParseUser("user");
     }

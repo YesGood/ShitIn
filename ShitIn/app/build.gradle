@@ -23,4 +23,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.android.support:appcompat-v7:21.0.0+'
     compile files('libs/Parse-1.6.0.jar')
+    compile files('libs/achartengine-1.1.0.jar')
 }

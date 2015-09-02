@@ -49,6 +49,7 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.yesgood.shitIn.fragments.CreateNewToilet;
+import com.yesgood.shitIn.fragments.HealthReport;
 import com.yesgood.shitIn.fragments.ToiletDetail;
 
 import java.util.HashMap;
@@ -248,6 +249,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
 
     // Set up the handler for the post button click
     Button postButton = (Button) findViewById(R.id.post_button);
+    Button reportButton = (Button) findViewById(R.id.report_button);
     postButton.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         // Only allow posts if we have a location
@@ -265,6 +267,15 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         /*Intent intent = new Intent(MainActivity.this, PostActivity.class);
         intent.putExtra(Application.INTENT_EXTRA_LOCATION, myLoc);
         startActivity(intent);*/
+      }
+    });
+
+    reportButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        FragmentManager fm = getSupportFragmentManager();
+        HealthReport healthReport = HealthReport.newInstance();
+        healthReport.show(fm,"test");
       }
     });
   }
