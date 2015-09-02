@@ -7,9 +7,9 @@
     <string name="babychanging_text">Baby changing avaliable?</string>
     <string name="closet_text">Closet count</string>
     <string name="urinal_text">Urinal count</string>
-    <string name="fee_text">Chaging fee?</string>
+    <string name="fee_text">Fee Charging?</string>
     <string name="paper_text">Free Toilet Paper?</string>
-    <string name="private_text">Make here as Private Toilet</string>
+    <string name="private_text">This is my private toilet</string>
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>
     <string name="submit_text">Submit</string>
@@ -41,8 +41,8 @@
     <string name="rating_text">Rating</string>
     <string name="comment_text">Comment</string>
     <string name="record_health_text">Health record</string>
-    <string name="action_shit_text">Take a shit</string>
-    <string name="action_urinal_text">Urinate</string>
+    <string name="action_shit_text">Poo</string>
+    <string name="action_urinal_text">Pee</string>
     <string name="status_text">Status</string>
     <string name="normal_text">Normal</string>
     <string name="bad_text">Bad</string>

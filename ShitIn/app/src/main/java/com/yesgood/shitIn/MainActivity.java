@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.yesgood.shitIn.fragments.CheckIn;
 import com.yesgood.shitIn.fragments.CreateNewToilet;
 import com.yesgood.shitIn.fragments.HealthReport;
 import com.yesgood.shitIn.fragments.ToiletDetail;
@@ -58,10 +60,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static com.yesgood.shitIn.ToiletDataDefine.getFloorText;
+
 public class MainActivity extends FragmentActivity implements LocationListener,
     GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
-        GoogleMap.OnMarkerClickListener
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.InfoWindowAdapter,
+        GoogleMap.OnInfoWindowClickListener
 {
 
   /*
@@ -223,7 +229,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
               public void onFinish() {
                 Marker marker = mapMarkers.get(item.getObjectId());
                 if (marker != null) {
-                  //marker.showInfoWindow();
+                  marker.showInfoWindow();
                 }
               }
 
@@ -232,7 +238,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             });
         Marker marker = mapMarkers.get(item.getObjectId());
         if (marker != null) {
-          //marker.showInfoWindow();
+          marker.showInfoWindow();
         }
       }
     });
@@ -294,6 +300,8 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         doMapQuery();
       }
     });
+    mapFragment.getMap().setInfoWindowAdapter(this);
+    mapFragment.getMap().setOnInfoWindowClickListener(this);
 
   }
 
@@ -508,7 +516,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
    */
   private void startPeriodicUpdates() {
     LocationServices.FusedLocationApi.requestLocationUpdates(
-        locationClient, locationRequest, this);
+            locationClient, locationRequest, this);
   }
 
   /*
@@ -636,7 +644,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
           mapMarkers.put(post.getObjectId(), marker);
             mapMarkerData.put(marker,post);
           if (post.getObjectId().equals(selectedPostObjectId)) {
-            //marker.showInfoWindow();
+            marker.showInfoWindow();
             selectedPostObjectId = null;
           }
         }
@@ -810,16 +818,60 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     public boolean onMarkerClick(Marker marker) {
         ParseGeoPoint gp = mapMarkerData.get(marker).getLocation();
         updateZoom(new LatLng(gp.getLatitude(), gp.getLongitude()));
+        marker.showInfoWindow();
+/*
+        ParseGeoPoint gp = mapMarkerData.get(marker).getLocation();
+        updateZoom(new LatLng(gp.getLatitude(), gp.getLongitude()));
         FragmentManager fm = getSupportFragmentManager();
         ToiletDetail toiletDetail = ToiletDetail.newInstance();
         toiletDetail.setToiletData(mapMarkerData.get(marker));
         toiletDetail.show(fm,"test");
+        */
         return true;
     }
 
-    /*
-     * Define a DialogFragment to display the error dialog generated in showErrorDialog.
-     */
+  @Override
+  public View getInfoWindow(Marker marker) {
+    return null;
+  }
+
+  @Override
+  public View getInfoContents(Marker marker) {
+    View v  = getLayoutInflater().inflate(R.layout.infowindow_toilet, null);
+
+    ToiletDataPost toilet = mapMarkerData.get(marker);
+    if(toilet == null)
+      return null;
+    if(toilet.getBadyChanging()) {
+      ((ImageView)v.findViewById(R.id.ivBabyChanging)).setImageResource(R.mipmap.ic_baby_changing_on);
+    }
+    if(toilet.getToiletPaper()) {
+      ((ImageView)v.findViewById(R.id.ivToiletPaper)).setImageResource(R.mipmap.ic_toilet_paper_on);
+    }
+    if(toilet.getFee() > 0) {
+      ((ImageView)v.findViewById(R.id.ivFee)).setImageResource(R.mipmap.ic_fee_on);
+    }
+    ((TextView)v.findViewById(R.id.tvName)).setText(toilet.getName());
+    ((TextView)v.findViewById(R.id.btnFloor)).setText(getFloorText(toilet.getFloor()));
+    return v;
+  }
+
+  @Override
+  public void onInfoWindowClick(Marker marker) {
+    ToiletDataPost toilet = mapMarkerData.get(marker);
+    if(toilet == null)
+      return;
+    FragmentManager fm = getSupportFragmentManager();
+    CheckIn checkIn = CheckIn.newInstance();
+    checkIn.setToiletName(toilet.getName());
+    checkIn.setToiletObjectId(toilet.getObjectId());
+    checkIn.show(fm, "test");
+  }
+
+
+  /*
+   * Define a DialogFragment to display the error dialog generated in showErrorDialog.
+   */
   public static class ErrorDialogFragment extends DialogFragment {
     // Global field to contain the error dialog
     private Dialog mDialog;

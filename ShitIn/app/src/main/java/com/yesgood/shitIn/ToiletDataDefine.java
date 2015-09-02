@@ -49,5 +49,13 @@ public class ToiletDataDefine {
         String[] urinal_array = context.getResources().getStringArray(R.array.urinal_numeric_array);
         return urinal_array.length > value ? urinal_array[value] : "";
     }
+
+    public static String getFloorText(int floor) {
+        if (floor > 0)
+            return Integer.toString(floor) + "F";
+        else if (floor < 0)
+            return "B" + Integer.toString(-floor);
+        return "?";
+    }
 }
 
