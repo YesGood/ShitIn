@@ -40,7 +40,7 @@
     <string name="leave_text">Leave</string>
     <string name="rating_text">Rating</string>
     <string name="comment_text">Comment</string>
-    <string name="record_health_text">Health record</string>
+    <string name="record_health_text">Health Record</string>
     <string name="action_shit_type">Type</string>
     <string name="action_shit_text">Poo</string>
     <string name="action_urinal_text">Pee</string>
@@ -50,7 +50,7 @@
     <string name="good_text">Good</string>
     <string name="post_rating_progress_text">Posting rating data ...</string>
     <string name="post_health_progress_text">Posting health data ...</string>
-    <string name="report_text">My health report</string>
+    <string name="report_text">My Health Report</string>
     <string name="last_urinate_text">Last urinate:</string>
     <string name="no_data_text">no data</string>
 </resources>

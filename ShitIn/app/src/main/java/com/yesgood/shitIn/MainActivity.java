@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -52,7 +51,6 @@ import com.parse.ParseQueryAdapter;
 import com.yesgood.shitIn.fragments.CheckIn;
 import com.yesgood.shitIn.fragments.CreateNewToilet;
 import com.yesgood.shitIn.fragments.HealthReport;
-import com.yesgood.shitIn.fragments.ToiletDetail;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -780,14 +778,16 @@ public class MainActivity extends FragmentActivity implements LocationListener,
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
+
     getMenuInflater().inflate(R.menu.main, menu);
 
-    menu.findItem(R.id.action_settings).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+    menu.findItem(R.id.action_settings).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
       public boolean onMenuItemClick(MenuItem item) {
         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         return true;
       }
     });
+
     return true;
   }
 
