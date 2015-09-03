@@ -25,6 +25,9 @@ import com.yesgood.shitIn.R;
 import com.yesgood.shitIn.RatingDataPost;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by hsuanlin on 2015/8/30.
@@ -127,25 +130,44 @@ public class CheckIn extends DialogFragment {
             objects.add(ratingDataPost);
         }
 
-        HealthDataPost healthDataPost = new HealthDataPost();
+        Calendar cal = GregorianCalendar.getInstance();
 
-        healthDataPost.setUser(user);
-        healthDataPost.setType(HealthDataDefine.getTypeIndex(rgType.getCheckedRadioButtonId()));
-        healthDataPost.setHealthStatus(HealthDataDefine.getStatusIndex(rgStatus.getCheckedRadioButtonId()));
+/*       for(int i = 0; i < 80 ; i++) {
 
-        ParseACL aclHealth = new ParseACL();
-        aclHealth.setReadAccess(user, true);
+            Random r = new Random();
+            int past_day = r.nextInt(6) + 1;*/
 
-        healthDataPost.setACL(aclHealth);
+            cal.setTime(new Date());
+//            cal.add(Calendar.DAY_OF_YEAR, - past_day);
+//            Date past7daysBeforeDate = cal.getTime();
 
-        objects.add(healthDataPost);
+            HealthDataPost healthDataPost = new HealthDataPost();
 
-        ParseObject.saveAllInBackground(objects, new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                dialog.dismiss();
-            }
-        });
+            healthDataPost.setFakeDate(cal.getTime());
+
+            healthDataPost.setUser(user);
+            healthDataPost.setType(HealthDataDefine.getTypeIndex(rgType.getCheckedRadioButtonId()));
+            healthDataPost.setHealthStatus(HealthDataDefine.getStatusIndex(rgStatus.getCheckedRadioButtonId()));
+
+/*            String[] typeArray = {"shit","urinate"};
+            String[] statusArray = {"bad","normal","good"};
+            healthDataPost.setType(typeArray[r.nextInt(2)]);
+            healthDataPost.setHealthStatus(statusArray[r.nextInt(3)]);*/
+
+            ParseACL aclHealth = new ParseACL();
+            aclHealth.setReadAccess(user, true);
+
+            healthDataPost.setACL(aclHealth);
+
+            objects.add(healthDataPost);
+//        }
+            ParseObject.saveAllInBackground(objects, new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    dialog.dismiss();
+                }
+            });
+
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

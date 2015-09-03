@@ -5,6 +5,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.Date;
+
 /**
  * Created by hsuanlin on 2015/8/30.
  */
@@ -37,6 +39,14 @@ public class HealthDataPost extends ParseObject {
 
     public void setUser(ParseUser value) {
         put("user", value);
+    }
+
+    public Date getFakeDate() {
+        return getDate("fakeDate");
+    }
+
+    public void setFakeDate(Date value) {
+        put("fakeDate", value);
     }
 
     public static ParseQuery<HealthDataPost> getQuery() {

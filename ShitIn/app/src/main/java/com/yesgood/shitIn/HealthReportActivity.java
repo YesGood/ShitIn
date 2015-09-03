@@ -173,7 +173,8 @@ public class HealthReportActivity extends ActionBarActivity implements ActionBar
             query.whereEqualTo("user", ParseUser.getCurrentUser());
             query.whereEqualTo("type", type);
             //query.whereGreaterThan("CreatedAt",past7daysBeforeDate.toString());
-            query.addAscendingOrder("CreatedAt");
+            //query.addAscendingOrder("CreatedAt");
+            query.addAscendingOrder("FakeDate");
             query.setLimit(QUERY_LIMIT);
             query.findInBackground(new FindCallback<HealthDataPost>() {
                 @Override
@@ -183,7 +184,8 @@ public class HealthReportActivity extends ActionBarActivity implements ActionBar
                     long lastTime = 0;
                     SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
                     for (HealthDataPost post : list) {
-                        Date createDate = post.getCreatedAt();
+                        //Date createDate = post.getCreatedAt();
+                        Date createDate = post.getFakeDate();
                         String dateStr = sdf.format(createDate);
                         String keyStr = dateStr + "_" + post.getHealthStatus();
                         lastTime = createDate.getTime();
@@ -232,7 +234,7 @@ public class HealthReportActivity extends ActionBarActivity implements ActionBar
                     data.setStacked(true);
                     data.setAxisXBottom(new Axis(axisValues).setHasLines(true));
                     data.setAxisYLeft(new Axis().setHasLines(true));
-                    //data.setAxisYLeft(Axis.generateAxisFromRange(0f, 20f, 1f).setHasLines(true));
+                    data.setAxisYLeft(Axis.generateAxisFromRange(0f, 20f, 1f).setHasLines(true));
 
 
                     ColumnChartView columnChartView = new ColumnChartView(getActivity());
