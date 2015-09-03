@@ -17,6 +17,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.yesgood.shitIn.HealthDataDefine;
 import com.yesgood.shitIn.HealthDataPost;
 import com.yesgood.shitIn.R;
 
@@ -28,10 +29,10 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by hsuanlin on 2015/9/2.
@@ -42,11 +43,18 @@ public class HealthReport extends DialogFragment {
     private TextView tvLastUrinate;
     private View view;
 
-    private String[][] Top10ErrCode={{"ADFU1","20"},{"MBPW2","19"},{"ABCDE","17"},{"BLFU1","16"},{"LCVD3","15"},{"ADDK1","11"},{"CMFU3","8"},{"LCCR2","7"},{"QBLE1","5"},{"SPNS1","2"}};
-
     public static HealthReport newInstance(){
         HealthReport frag = new HealthReport();
         return frag;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        int style = DialogFragment.STYLE_NO_FRAME, theme = 0;
+        theme = R.style.AppTheme;
+        setStyle(style, theme);
     }
 
     @Override
@@ -60,28 +68,33 @@ public class HealthReport extends DialogFragment {
         query.include("user");
         query.whereEqualTo("user", ParseUser.getCurrentUser());
         query.addAscendingOrder("CreatedAt");
+        query.setLimit(100);
         query.findInBackground(new FindCallback<HealthDataPost>() {
             @Override
             public void done(List<HealthDataPost> list, ParseException e) {
-                LinkedHashMap<String,Integer> urinalData = new LinkedHashMap<String, Integer>();
+                ArrayList<String> dateKeys = new ArrayList<String>();
+                HashMap<String, Integer> urinalData = new HashMap<String, Integer>();
                 long lastTime = 0;
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-                for(HealthDataPost post : list){
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
+                for (HealthDataPost post : list) {
                     Date createDate = post.getCreatedAt();
                     String dateStr = sdf.format(createDate);
+                    String keyStr = dateStr + "_" + post.getHealthStatus();
                     lastTime = createDate.getTime();
-                    if( urinalData.containsKey(dateStr))
-                    {
-                        urinalData.put(dateStr,urinalData.get(dateStr) + 1);
+                    if (!dateKeys.contains(dateStr)) {
+                        dateKeys.add(dateStr);
                     }
-                    else
-                    {
-                        urinalData.put(dateStr,1);
+
+                    if(urinalData.containsKey(keyStr)){
+                        urinalData.put(keyStr, urinalData.get(keyStr) + 1);
+                    }
+                    else{
+                        urinalData.put(keyStr, 1);
                     }
                 }
 
-                setBarChart(urinalData);
-                if( lastTime != 0) {
+                setBarChart(dateKeys,urinalData);
+                if (lastTime != 0) {
                     tvLastUrinate.setText(getRelativeTimeAgo(lastTime));
                 }
             }
@@ -91,22 +104,30 @@ public class HealthReport extends DialogFragment {
         return view;
     }
 
-    private void setBarChart( LinkedHashMap<String,Integer> map)
+    private void setBarChart( ArrayList<String> keys, HashMap<String,Integer> map)
     {
-        View vChart = getBarChart(view,"", "date", "counter", map);
+        View vChart = getBarChart(view,"", "date", "counter", keys,map);
         llBarChart.removeAllViews();
-        llBarChart.addView(vChart, new ActionBar.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, 400));
+        llBarChart.addView(vChart, new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, 800));
     }
-    private View getBarChart(View layoutView, String chartTitle, String XTitle, String YTitle, LinkedHashMap<String,Integer> map){
+    private View getBarChart(View layoutView, String chartTitle, String XTitle, String YTitle, ArrayList<String> keys, HashMap<String,Integer> map){
 
-        XYSeries Series = new XYSeries(YTitle);
+        XYSeries nSeries = new XYSeries("normal");
+        XYSeries bSeries = new XYSeries("bad");
+        XYSeries gSeries = new XYSeries("good");
 
         XYMultipleSeriesDataset Dataset = new XYMultipleSeriesDataset();
-        Dataset.addSeries(Series);
+        Dataset.addSeries(nSeries);
+        Dataset.addSeries(bSeries);
+        Dataset.addSeries(gSeries);
 
         XYMultipleSeriesRenderer Renderer = new XYMultipleSeriesRenderer();
-        XYSeriesRenderer yRenderer = new XYSeriesRenderer();
-        Renderer.addSeriesRenderer(yRenderer);
+        XYSeriesRenderer nRenderer = new XYSeriesRenderer();
+        XYSeriesRenderer bRenderer = new XYSeriesRenderer();
+        XYSeriesRenderer gRenderer = new XYSeriesRenderer();
+        Renderer.addSeriesRenderer(nRenderer);
+        Renderer.addSeriesRenderer(bRenderer);
+        Renderer.addSeriesRenderer(gRenderer);
 
         //Renderer.setApplyBackgroundColor(true);
         //Renderer.setBackgroundColor(Color.BLACK);
@@ -120,7 +141,7 @@ public class HealthReport extends DialogFragment {
         Renderer.setLabelsColor(Color.BLACK);
         Renderer.setChartTitleTextSize(20);
         Renderer.setAxesColor(Color.BLACK);
-        Renderer.setBarSpacing(0.5);
+        //Renderer.setBarSpacing(0.5);
 
         //Renderer.setXTitle(XTitle);
         //Renderer.setYTitle(YTitle);
@@ -128,27 +149,50 @@ public class HealthReport extends DialogFragment {
         Renderer.setYLabelsColor(0, Color.BLACK);
         Renderer.setXLabelsAlign(Paint.Align.CENTER);
         Renderer.setYLabelsAlign(Paint.Align.CENTER);
-        Renderer.setXLabelsAngle(-25);
-        Renderer.setLabelsTextSize(20);
+        //Renderer.setXLabelsAngle(-25);
+        Renderer.setLabelsTextSize(30);
 
         Renderer.setXLabels(0);
         Renderer.setYAxisMin(0);
+        Renderer.setYAxisMax(20);
+
+        //Renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.VERTICAL);
 
 
-        yRenderer.setColor(Color.RED);
-        yRenderer.setChartValuesTextSize(20);
-        yRenderer.setDisplayChartValues(true);
+        bRenderer.setColor(Color.RED);
+        bRenderer.setChartValuesTextSize(20);
+        bRenderer.setDisplayChartValues(true);
+        bRenderer.setChartValuesTextSize(20);
+        nRenderer.setColor(Color.BLUE);
+        nRenderer.setChartValuesTextSize(20);
+        nRenderer.setDisplayChartValues(true);
+        nRenderer.setChartValuesTextSize(20);
+        gRenderer.setColor(Color.GREEN);
+        gRenderer.setChartValuesTextSize(20);
+        gRenderer.setDisplayChartValues(true);
+        gRenderer.setChartValuesTextSize(20);
 
-        int r =0;
-        for(Map.Entry<String,Integer> entry: map.entrySet())
+
+/*        bSeries.add(0, 0);
+        nSeries.add(0, 0);
+        gSeries.add(0, 0);
+        Renderer.addXTextLabel(0, "");*/
+        int r =1;
+        for(int i = 0; i < keys.size(); i++)
         {
             //Log.i("DEBUG", (r+1)+" "+xy[r][0]+"; "+xy[r][1]);
-            Renderer.addXTextLabel(r, entry.getKey());
-            Series.add(r, entry.getValue());
+            String dateKey = keys.get(i);
+            Renderer.addXTextLabel(r, dateKey);
+            bSeries.add(r, map.containsKey(dateKey + "_" + HealthDataDefine.CONST_BAD) ? map.get(dateKey + "_" + HealthDataDefine.CONST_BAD) : 0);
+            nSeries.add(r, map.containsKey(dateKey + "_" + HealthDataDefine.CONST_NORMAL) ? map.get(dateKey + "_" + HealthDataDefine.CONST_NORMAL) : 0);
+            gSeries.add(r, map.containsKey(dateKey + "_" + HealthDataDefine.CONST_GOOD) ? map.get(dateKey + "_" + HealthDataDefine.CONST_GOOD) : 0);
+
             r++;
         }
-        Series.add(r, 0);
-        Renderer.addXTextLabel(r, "");
+/*        bSeries.add(r, 0);
+        nSeries.add(r, 0);
+        gSeries.add(r, 0);
+        Renderer.addXTextLabel(r, "");*/
 
 
         View view = ChartFactory.getBarChartView(layoutView.getContext(), Dataset, Renderer, BarChart.Type.DEFAULT);

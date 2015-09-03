@@ -3,4 +3,13 @@
     <integer
         name="COMMENT_MAX_LEN"
         >140</integer>
+    <color
+        name="REPORT_COLOR_BAD"
+        >#ffea4335</color>
+    <color
+        name="REPORT_COLOR_GOOD"
+        >#ff52a74f</color>
+    <color
+        name="REPORT_COLOR_NORMAL"
+        >#ff4285f4</color>
 </resources>
